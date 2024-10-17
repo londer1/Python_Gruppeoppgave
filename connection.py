@@ -4,68 +4,105 @@ import sqlite3
 # Custom CSS
 page_bg_css = """
 <style>
+/* Generell bakgrunn og layout */
 [data-testid="stAppViewContainer"] {
-    background-color: #f4ece4;  /* Lys beige bakgrunn */
+    background-color: #f4f1ea;  /* Lys beige bakgrunn */
+    padding: 20px;
 }
 
 [data-testid="stHeader"] {
-    background-color: #d7ccc8;  /* Lys brun header */
+    background-color: #c8b197;  /* Lys brun header */
+    color: #5d4037;  /* Mørk brun for tekst i header */
+    border-bottom: 10px solid #8b6e4e;
 }
 
+/* Tekst-styling */
 h1, h2, h3 {
     color: #5d4037;  /* Mørk brun for overskrifter */
-    font-family: 'Georgia', serif;  /* Elegant font */
+    font-family: 'Georgia', serif;  /* Klassisk font */
+    font-weight: bold;
 }
 
+p {
+    color: #8d6e63;  /* Lysere brun for vanlig tekst */
+    font-family: 'Georgia', serif;
+}
+
+/* Styling for input-felter */
+input {
+    background-color: #faf3e6;  /* Lys beige for input */
+    color: #5d4037;  /* Mørk brun tekst */
+    border: 1px solid #a1887f;  /* Lys brun border */
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+/* Knapp-styling */
 button {
-    background-color: #8d6e63; /* Brun knapp */
+    background-color: #8b6e4e; /* Dyp brun knapp */
     color: white;
     font-size: 16px;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     text-align: center;
     display: inline-block;
     margin: 4px 2px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .stButton>button {
-    background-color: #8d6e63;  /* Brun bakgrunn for knapper */
+    background-color: #8b6e4e;  /* Brun for Streamlit-knapper */
     color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
-input {
-    background-color: #efebe9;  /* Lys brun input felt */
-    color: #5d4037;  /* Mørk brun tekst */
-    border: 1px solid #a1887f;
-    padding: 8px;
-    font-size: 14px;
-}
-
-textarea {
-    background-color: #efebe9;  /* Lys brun bakgrunn for tekstområde */
-    color: #5d4037;  /* Mørk brun tekst */
-    border: 1px solid #a1887f;
-    padding: 8px;
-    font-size: 14px;
-}
-
-select {
-    background-color: #efebe9;  /* Lys brun bakgrunn for dropdown */
-    color: #5d4037;  /* Mørk brun tekst */
-    border: 1px solid #a1887f;
-    padding: 8px;
-    font-size: 14px;
-}
-
+/* For tekstinnfyllingsfelter i Streamlit */
 .stTextInput>div>input {
-    background-color: #efebe9;  /* Lys brun bakgrunn for tekstinnfyllingsfelt */
+    background-color: #faf3e6;  /* Lys beige */
     color: #5d4037;  /* Mørk brun tekst */
+    border: 1px solid #a1887f;
+    padding: 8px;
+    border-radius: 5px;
 }
 
+/* For nummerinput i Streamlit */
 .stNumberInput>div>input {
-    background-color: #efebe9;  /* Lys brun bakgrunn for nummerinput */
-    color: #5d4037;  /* Mørk brun tekst */
+    background-color: #faf3e6;
+    color: #5d4037;
+    border: 1px solid #a1887f;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* For dropdown-meny i Streamlit */
+.stSelectbox>div>input {
+    background-color: #faf3e6;
+    color: #5d4037;
+    border: 1px solid #a1887f;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* Tekstbokser */
+textarea {
+    background-color: #faf3e6;
+    color: #5d4037;
+    border: 1px solid #a1887f;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Georgia', serif;
+}
+
+/* Justering av layout */
+.stBlock>div {
+    background-color: #e5ddd5;  /* Lys brun boks bak input-seksjon */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 </style>
 """
