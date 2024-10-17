@@ -1,6 +1,18 @@
 import streamlit as st
 import sqlite3
 
+# Custom CSS
+page_bg_css = """
+<style>
+[data-testid="stAppViewContainer"] {
+    background-color: #ADD8E6;  /* Light Blue */
+}
+</style>
+"""
+
+# Apply the custom CSS
+st.markdown(page_bg_css, unsafe_allow_html=True)
+
 class PostDB:
     def __init__(self, db_name='db.sqlite3'):
         self.conn = sqlite3.connect(db_name)
@@ -55,7 +67,7 @@ else:
 st.header('Create New Post')
 with st.form('create_form'):
     title = st.text_input('Title')
-    pages = st.text_area('pages')
+    pages = st.number_input('Pages', min_value=1)
     price = st.number_input('Price', min_value=0)
     amount = st.number_input('Amount', min_value=0)
     submitted = st.form_submit_button('Create')
@@ -69,7 +81,7 @@ st.header('Update Post')
 with st.form('update_form'):
     post_id = st.number_input('Post ID', min_value=1)
     new_title = st.text_input('New Title')
-    new_pages = st.text_area('New Pages')
+    new_pages = st.number_input('New Pages', min_value=1)
     new_price = st.number_input('New Price', min_value=0)
     new_amount = st.number_input('New Amount', min_value=0)
     update_submitted = st.form_submit_button('Update')
