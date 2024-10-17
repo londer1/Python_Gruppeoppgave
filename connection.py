@@ -5,20 +5,20 @@ import sqlite3
 page_bg_css = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-color: #ADD8E6;  /* Light Blue */
+    background-color: #f4ece4;  /* Lys beige bakgrunn */
 }
 
 [data-testid="stHeader"] {
-    background-color: #f2f2f2;  /* Light grey header */
+    background-color: #d7ccc8;  /* Lys brun header */
 }
 
 h1, h2, h3 {
-    color: #333333;  /* Dark grey for headers */
-    font-family: 'Arial', sans-serif;  /* Custom font */
+    color: #5d4037;  /* Mørk brun for overskrifter */
+    font-family: 'Georgia', serif;  /* Elegant font */
 }
 
 button {
-    background-color: #4CAF50; /* Green button */
+    background-color: #8d6e63; /* Brun knapp */
     color: white;
     font-size: 16px;
     border: none;
@@ -30,13 +30,45 @@ button {
 }
 
 .stButton>button {
-    background-color: #4CAF50;  /* Customize Streamlit buttons */
+    background-color: #8d6e63;  /* Brun bakgrunn for knapper */
     color: white;
 }
 
+input {
+    background-color: #efebe9;  /* Lys brun input felt */
+    color: #5d4037;  /* Mørk brun tekst */
+    border: 1px solid #a1887f;
+    padding: 8px;
+    font-size: 14px;
+}
+
+textarea {
+    background-color: #efebe9;  /* Lys brun bakgrunn for tekstområde */
+    color: #5d4037;  /* Mørk brun tekst */
+    border: 1px solid #a1887f;
+    padding: 8px;
+    font-size: 14px;
+}
+
+select {
+    background-color: #efebe9;  /* Lys brun bakgrunn for dropdown */
+    color: #5d4037;  /* Mørk brun tekst */
+    border: 1px solid #a1887f;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.stTextInput>div>input {
+    background-color: #efebe9;  /* Lys brun bakgrunn for tekstinnfyllingsfelt */
+    color: #5d4037;  /* Mørk brun tekst */
+}
+
+.stNumberInput>div>input {
+    background-color: #efebe9;  /* Lys brun bakgrunn for nummerinput */
+    color: #5d4037;  /* Mørk brun tekst */
+}
 </style>
 """
-
 
 # Apply the custom CSS
 st.markdown(page_bg_css, unsafe_allow_html=True)
