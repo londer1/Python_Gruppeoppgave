@@ -20,12 +20,12 @@ class PostDB:
     def add_post(self, title, content, price, amount):
         with self.conn:
             self.conn.execute('INSERT INTO posts (title, content, price, amount) VALUES (?, ?, ?, ?)',
-                              (title, content, price, amount))
+                            (title, content, price, amount))
 
     def update_post(self, post_id, title, content, price, amount):
         with self.conn:
             self.conn.execute('UPDATE posts SET title = ?, content = ?, price = ?, amount = ? WHERE id = ?',
-                              (title, content, price, amount, post_id))
+                            (title, content, price, amount, post_id))
 
     def delete_post(self, post_id):
         with self.conn:
