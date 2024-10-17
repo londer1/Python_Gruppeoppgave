@@ -7,8 +7,36 @@ page_bg_css = """
 [data-testid="stAppViewContainer"] {
     background-color: #ADD8E6;  /* Light Blue */
 }
+
+[data-testid="stHeader"] {
+    background-color: #f2f2f2;  /* Light grey header */
+}
+
+h1, h2, h3 {
+    color: #333333;  /* Dark grey for headers */
+    font-family: 'Arial', sans-serif;  /* Custom font */
+}
+
+button {
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.stButton>button {
+    background-color: #4CAF50;  /* Customize Streamlit buttons */
+    color: white;
+}
+
 </style>
 """
+
 
 # Apply the custom CSS
 st.markdown(page_bg_css, unsafe_allow_html=True)
@@ -36,12 +64,12 @@ class PostDB:
 
     def add_post(self, title, pages, price, amount):
         self.conn.execute('INSERT INTO posts (title, pages, price, amount) VALUES (?, ?, ?, ?)',
-                          (title, pages, price, amount))
+                        (title, pages, price, amount))
         self.conn.commit()
 
     def update_post(self, id, title, pages, price, amount):
         self.conn.execute('UPDATE posts SET title = ?, pages = ?, price = ?, amount = ? WHERE id = ?',
-                          (title, pages, price, amount, id))
+                        (title, pages, price, amount, id))
         self.conn.commit()
 
     def delete_post(self, id):
