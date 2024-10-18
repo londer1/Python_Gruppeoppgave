@@ -19,6 +19,7 @@ else:
 
 # Create a new user
 st.header('Create New User')
+#
 with st.form('create_user_form'):
     email = st.text_input('Email')
     password = st.text_input('Password', type='password')
