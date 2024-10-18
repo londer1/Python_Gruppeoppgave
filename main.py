@@ -3,7 +3,6 @@ from connection import PostDB  # Import the PostDB class
 import time
 
 def refresh_posts():
-    time.sleep(2)  # Simulate a delay
     st.session_state.posts = db.fetch_all_posts()
 
 # Initialize the database connection
