@@ -83,3 +83,5 @@ class UserDB:
     def delete_user(self, id):
         self.conn.execute('DELETE FROM Users WHERE id = ?', (id,))
         self.conn.commit()
+
+    
