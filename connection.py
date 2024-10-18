@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 class PostDB:
     def __init__(self, db_name='db.sqlite3'):
@@ -31,6 +32,7 @@ class PostDB:
         ''')
         self.conn.commit()
 
+    # Post-related methods
     def fetch_all_posts(self):
         return self.conn.execute('SELECT * FROM Posts').fetchall()
 
@@ -47,11 +49,18 @@ class PostDB:
     def delete_post(self, id):
         self.conn.execute('DELETE FROM Posts WHERE id = ?', (id,))
         self.conn.commit()
-        
+
+    # User-related methods
     def fetch_all_users(self):
         return self.conn.execute('SELECT * FROM Users').fetchall()
 
-    def add_user(self, email, password, date_joined, staff, borrower):
+    def add_user(self, email, password, staff=False):
+        """
+        Adds a new user. Borrower is always True, and date_joined is set to the current date.
+        Staff users must be manually set to True when calling this method.
+        """
+        borrower = True
+        date_joined = datetime.now().strftime('%Y-%m-%d')  # Automatically add the current date
         self.conn.execute('INSERT INTO Users (email, password, date_joined, staff, borrower) VALUES (?, ?, ?, ?, ?)',
                           (email, password, date_joined, staff, borrower))
         self.conn.commit()
