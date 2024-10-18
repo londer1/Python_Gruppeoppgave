@@ -28,7 +28,9 @@ p {
 .book-card {
     display: inline-block;
     width: 100%;
+    height: 400px;
     margin: 0.5%;
+    margin-bottom: 15px;
     background-color: #fff;
     padding: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -38,7 +40,7 @@ p {
 
 .book-card img {
     width: 100%;
-    height: auto;
+    height: 200px;
 }
 
 .book-info {
@@ -73,8 +75,21 @@ books = [
     {"title": "War and Peace", "price": "250 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1413215930i/656.jpg"},
     {"title": "Pride and Prejudice", "price": "170 NOK", "stock": 7, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320399351i/1885.jpg"},
     {"title": "The Catcher in the Rye", "price": "190 NOK", "stock": 2, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg"},
-    {"title": "Brave New World", "price": "210 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1575509280i/5129.jpg"}
+    {"title": "Brave New World", "price": "210 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1575509280i/5129.jpg"},
+    {"title": "1984", "price": "220 NOK", "stock": 8, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348990566i/5470.jpg"},
+    {"title": "The Great Gatsby", "price": "180 NOK", "stock": 10, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490528560i/4671.jpg"},
+    {"title": "Jane Eyre", "price": "195 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327867269i/10210.jpg"},
+    {"title": "The Hobbit", "price": "230 NOK", "stock": 9, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1546071216i/5907.jpg"},
+    {"title": "The Adventures of Sherlock Holmes", "price": "175 NOK", "stock": 12, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1164045516i/3590.jpg"},
+    {"title": "Frankenstein", "price": "165 NOK", "stock": 7, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1381512375i/18490.jpg"},
+    {"title": "Crime and Punishment", "price": "210 NOK", "stock": 4, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1382846449i/7144.jpg"},
+    {"title": "Wuthering Heights", "price": "180 NOK", "stock": 11, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1388212715i/6185.jpg"},
+    {"title": "The Picture of Dorian Gray", "price": "190 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1546103428i/5297.jpg"},
+    {"title": "Dracula", "price": "185 NOK", "stock": 3, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387151694i/17245.jpg"},
+    {"title": "Les Misérables", "price": "245 NOK", "stock": 2, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1411852091i/24280.jpg"},
+    {"title": "The Brothers Karamazov", "price": "260 NOK", "stock": 1, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1427728126i/4934.jpg"}
 ]
+
 
 # Frontpage content
 st.title("Explore Our Book Collection")
