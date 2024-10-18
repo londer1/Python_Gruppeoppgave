@@ -65,13 +65,13 @@ st.markdown(page_bg_css, unsafe_allow_html=True)
 
 # Book data
 books = [
-    {"title": "The Great Gatsby", "price": "150 NOK", "stock": 5, "image": "https://example.com/gatsby.jpg"},
-    {"title": "1984", "price": "200 NOK", "stock": 8, "image": "https://example.com/1984.jpg"},
-    {"title": "To Kill a Mockingbird", "price": "180 NOK", "stock": 3, "image": "https://example.com/mockingbird.jpg"},
-    {"title": "Moby-Dick", "price": "220 NOK", "stock": 4, "image": "https://example.com/mobydick.jpg"},
-    {"title": "War and Peace", "price": "250 NOK", "stock": 6, "image": "https://example.com/warpeace.jpg"},
-    {"title": "Pride and Prejudice", "price": "170 NOK", "stock": 7, "image": "https://example.com/pride.jpg"},
-    {"title": "The Catcher in the Rye", "price": "190 NOK", "stock": 2, "image": "https://example.com/catcher.jpg"},
+    {"title": "The Book of Bill", "price": "150 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1702662879i/203315037.jpg"},
+    {"title": "Sky Full of Elephants", "price": "200 NOK", "stock": 8, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1707161023i/207293815.jpg"},
+    {"title": "To Kill a Mockingbird", "price": "180 NOK", "stock": 3, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553383690i/2657.jpg"},
+    {"title": "Moby-Dick", "price": "220 NOK", "stock": 4, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327940656i/153747.jpg"},
+    {"title": "War and Peace", "price": "250 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1413215930i/656.jpg"},
+    {"title": "Pride and Prejudice", "price": "170 NOK", "stock": 7, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320399351i/1885.jpg"},
+    {"title": "The Catcher in the Rye", "price": "190 NOK", "stock": 2, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg"},
     {"title": "Brave New World", "price": "210 NOK", "stock": 5, "image": "https://example.com/brave.jpg"}
 ]
 
