@@ -27,8 +27,8 @@ p {
 
 .book-card {
     display: inline-block;
-    width: 22%;
-    margin: 1%;
+    width: 100%;
+    margin: 0.5%;
     background-color: #fff;
     padding: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -46,17 +46,18 @@ p {
 }
 
 .book-title {
-    font-size: 18px;
+    font-size: 16px;
     color: #5d4037;
+    word-wrap: break-word;
 }
 
 .book-price {
-    font-size: 16px;
+    font-size: 14px;
     color: #8d6e63;
 }
 
 .book-stock {
-    font-size: 14px;
+    font-size: 12px;
     color: #33291e;
 }
 </style>
@@ -72,7 +73,7 @@ books = [
     {"title": "War and Peace", "price": "250 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1413215930i/656.jpg"},
     {"title": "Pride and Prejudice", "price": "170 NOK", "stock": 7, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320399351i/1885.jpg"},
     {"title": "The Catcher in the Rye", "price": "190 NOK", "stock": 2, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg"},
-    {"title": "Brave New World", "price": "210 NOK", "stock": 5, "image": "https://example.com/brave.jpg"}
+    {"title": "Brave New World", "price": "210 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1575509280i/5129.jpg"}
 ]
 
 # Frontpage content
