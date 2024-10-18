@@ -8,6 +8,7 @@ class PostDB:
         self.init_db()
 
     def init_db(self):
+        # Create Posts table if it doesn't exist
         self.conn.execute('''
             CREATE TABLE IF NOT EXISTS Posts (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,19 +21,8 @@ class PostDB:
                 series BOOL NOT NULL
             )
         ''')
-        self.conn.execute('''
-            CREATE TABLE IF NOT EXISTS Users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                email VARCHAR(150) NOT NULL,
-                password VARCHAR(200) NOT NULL,
-                date_joined DATE NOT NULL,
-                staff BOOL NOT NULL,
-                borrower BOOL NOT NULL
-            )
-        ''')
         self.conn.commit()
 
-    # Post-related methods
     def fetch_all_posts(self):
         return self.conn.execute('SELECT * FROM Posts').fetchall()
 
@@ -50,7 +40,27 @@ class PostDB:
         self.conn.execute('DELETE FROM Posts WHERE id = ?', (id,))
         self.conn.commit()
 
-    # User-related methods
+
+class UserDB:
+    def __init__(self, db_name='db.sqlite3'):
+        self.conn = sqlite3.connect(db_name)
+        self.conn.row_factory = sqlite3.Row
+        self.init_db()
+
+    def init_db(self):
+        # Create Users table if it doesn't exist
+        self.conn.execute('''
+            CREATE TABLE IF NOT EXISTS Users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                email VARCHAR(150) NOT NULL,
+                password VARCHAR(200) NOT NULL,
+                date_joined DATE NOT NULL,
+                staff BOOL NOT NULL,
+                borrower BOOL NOT NULL
+            )
+        ''')
+        self.conn.commit()
+
     def fetch_all_users(self):
         return self.conn.execute('SELECT * FROM Users').fetchall()
 
