@@ -41,7 +41,6 @@ with st.form('reset_password_form'):
     reset_email = st.text_input('Email to reset password')
     new_password = st.text_input('New Password', type='password')
     reset_submitted = st.form_submit_button('Reset Password')
-
     if reset_submitted:
         existing_user = db.fetch_user_by_email(reset_email)
         if existing_user:
