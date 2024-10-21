@@ -12,3 +12,4 @@ To get started, ensure you have the following installed:
 
 - Streamlit: A powerful framework for building data-driven apps. Install it with:
   pip install streamlit
+
