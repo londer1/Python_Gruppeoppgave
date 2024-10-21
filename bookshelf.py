@@ -128,18 +128,18 @@ books = [
     {"title": "The Wind-Up Bird Chronicle", "price": "250 NOK", "stock": 8, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327872639i/11275.jpg"},
     {"title": "The Light We Lost", "price": "210 NOK", "stock": 9, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1493724414i/32956365.jpg"},
     {"title": "The Name of the Wind", "price": "240 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1704917687i/186074.jpg"},
-    {"title": "The Rosie Project", "price": "180 NOK", "stock": 10, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1363527183i/16181775.jpg"},
-    {"title": "Norwegian Wood", "price": "200 NOK", "stock": 4, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327873761i/11297.jpg"},
-    {"title": "The Blind Assassin", "price": "230 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1376655379i/78433.jpg"},
-    {"title": "Atonement", "price": "210 NOK", "stock": 7, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1424131014i/6867.jpg"},
-    {"title": "Beloved", "price": "220 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1568374942i/6149.jpg"},
-    {"title": "Never Let Me Go", "price": "190 NOK", "stock": 9, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1502115818i/6334.jpg"},
-    {"title": "Cloud Atlas", "price": "230 NOK", "stock": 4, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1405246257i/49628.jpg"},
-    {"title": "All the Light We Cannot See", "price": "240 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1579638723i/18143977.jpg"},
-    {"title": "Little Fires Everywhere", "price": "210 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1538702537i/51704136.jpg"},
+    {"title": "The Rosie Project", "price": "180 NOK", "stock": 10, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1371651741i/16181775.jpg"},
+    {"title": "Norwegian Wood", "price": "200 NOK", "stock": 4, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1713542603i/11297.jpg"},
+    {"title": "The Blind Assassin", "price": "230 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1451445426i/78433.jpg"},
+    {"title": "Atonement", "price": "210 NOK", "stock": 7, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320449708i/6867.jpg"},
+    {"title": "Beloved", "price": "220 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1722944318i/6149.jpg"},
+    {"title": "Never Let Me Go", "price": "190 NOK", "stock": 9, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1722944318i/6149.jpg"},
+    {"title": "Cloud Atlas", "price": "230 NOK", "stock": 4, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1563042852i/49628.jpg"},
+    {"title": "All the Light We Cannot See", "price": "240 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1451445646i/18143977.jpg"},
+    {"title": "Little Fires Everywhere", "price": "210 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1522684533i/34273236.jpg"},
     {"title": "The Secret History", "price": "250 NOK", "stock": 3, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1451554846i/29044.jpg"},
-    {"title": "Circe", "price": "220 NOK", "stock": 8, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1519677140i/35959740.jpg"},
-    {"title": "The Power", "price": "200 NOK", "stock": 7, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1460415862i/29751398.jpg"}
+    {"title": "Circe", "price": "220 NOK", "stock": 8, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1565909496i/35959740.jpg"},
+    {"title": "The Power", "price": "200 NOK", "stock": 7, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1462814013i/29751398.jpg"}
 ]
 
 
