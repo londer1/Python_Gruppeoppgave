@@ -1,6 +1,6 @@
 import streamlit as st
 from connection import PostDB  # Import the PostDB class
-import time
+import sqlite3
 
 def refresh_posts():
     st.session_state.posts = db.fetch_all_posts()
@@ -9,59 +9,68 @@ def refresh_posts():
 db = PostDB()
 
 # Streamlit app layout
-st.title('Post Management')
+st.title('Bokhandel Lagerstyring')
 
-# View all posts
-st.header('All Posts')
-posts = db.fetch_all_posts()
+# Function to sort posts
+def sort_posts(sort_by):
+    query = f"SELECT * FROM Posts ORDER BY {sort_by}"
+    return db.conn.execute(query).fetchall()
+
+# View all posts with sorting options
+st.header('Oversikt over lager')
+sort_option = st.selectbox('Sorter etter', ['Navn', 'Pris', 'Mengde'])
+sort_column = {
+    'Navn': 'title',
+    'Pris': 'price',
+    'Mengde': 'amount'
+}[sort_option]
+posts = sort_posts(sort_column)
+
 if posts:
     for post in posts:
-        st.write(f"ID: {post['id']}, Title: {post['title']}, Pages: {post['pages']}, Price: {post['price']}, Amount: {post['amount']}, Genre: {post['genre']}, Author: {post['author']}, Series: {post['series']}")
+        st.write(f"ID: {post['id']}, Navn: {post['title']}, Pris: {post['price']}, Mengde: {post['amount']}, Forfatter: {post['author']}")
 else:
-    st.write("No posts available.")
+    st.write("Ingen varer tilgjengelig.")
 
-# Create a new post
-st.header('Create New Post')
+# Register new items (add post)
+st.header('Registrer ny vare')
 with st.form('create_form'):
-    title = st.text_input('Title')
-    pages = st.number_input('Pages', min_value=1)
-    price = st.number_input('Price', min_value=0)
-    amount = st.number_input('Amount', min_value=0)
-    genre = st.text_input('Genre')
-    author = st.text_input('Author')
-    series = st.checkbox('Is Series?')
-    submitted = st.form_submit_button('Create')
+    title = st.text_input('Navn')
+    price = st.number_input('Pris', min_value=0)
+    amount = st.number_input('Mengde på lager', min_value=0)
+    genre = st.text_input('Sjanger')
+    author = st.text_input('Forfatter')
+    series = st.checkbox('Er dette en serie?')
+    submitted = st.form_submit_button('Registrer')
 
     if submitted:
-        db.add_post(title, pages, price, amount, genre, author, series)
-        st.success('Post created!')
+        db.add_post(title, 0, price, amount, genre, author, series)  # 0 pages since it's not used
+        st.success('Vare registrert!')
         refresh_posts()
 
-# Update a post
-st.header('Update Post')
+# Update inventory (update post)
+st.header('Oppdater beholdning')
 with st.form('update_form'):
-    post_id = st.number_input('Post ID', min_value=1)
-    new_title = st.text_input('New Title')
-    new_pages = st.number_input('New Pages', min_value=1)
-    new_price = st.number_input('New Price', min_value=0)
-    new_amount = st.number_input('New Amount', min_value=0)
-    new_genre = st.text_input('New Genre')
-    new_author = st.text_input('New Author')
-    new_series = st.checkbox('Is Series?')
-    update_submitted = st.form_submit_button('Update')
+    post_id = st.number_input('ID på varen som skal oppdateres', min_value=1)
+    new_amount = st.number_input('Ny mengde på lager', min_value=0)
+    update_submitted = st.form_submit_button('Oppdater')
 
     if update_submitted:
-        db.update_post(post_id, new_title, new_pages, new_price, new_amount, new_genre, new_author, new_series)
-        st.success('Post updated!')
-        refresh_posts()
+        post = db.conn.execute('SELECT * FROM Posts WHERE id = ?', (post_id,)).fetchone()
+        if post:
+            db.update_post(post_id, post['title'], post['pages'], post['price'], new_amount, post['genre'], post['author'], post['series'])
+            st.success('Beholdning oppdatert!')
+            refresh_posts()
+        else:
+            st.error('Vare ikke funnet.')
 
-# Delete a post
-st.header('Delete Post')
+# Delete a post (delete item)
+st.header('Slett vare')
 with st.form('delete_form'):
-    delete_id = st.number_input('Post ID to Delete', min_value=1)
-    delete_submitted = st.form_submit_button('Delete')
+    delete_id = st.number_input('ID på varen som skal slettes', min_value=1)
+    delete_submitted = st.form_submit_button('Slett')
 
     if delete_submitted:
         db.delete_post(delete_id)
-        st.success('Post deleted!')
+        st.success('Vare slettet!')
         refresh_posts()
