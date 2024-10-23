@@ -1,5 +1,5 @@
 import streamlit as st
-from connection import PostDB  # Import the PostDB class
+from connection import PostDB, Search  # Import the PostDB class
 import time
 
 def refresh_posts():
@@ -24,9 +24,9 @@ else:
 st.header('Create New Post')
 with st.form('create_form'):
     title = st.text_input('Title')
-    pages = st.number_input('Pages', min_value=1)
-    price = st.number_input('Price', min_value=0)
-    amount = st.number_input('Amount', min_value=0)
+    pages = st.number_input('Pages', min_value=2)
+    price = st.number_input('Price', min_value=1)
+    amount = st.number_input('Amount', min_value=1)
     genre = st.text_input('Genre')
     author = st.text_input('Author')
     series = st.checkbox('Is Series?')
@@ -37,14 +37,16 @@ with st.form('create_form'):
         st.success('Post created!')
         refresh_posts()
 
+
+
 # Update a post
 st.header('Update Post')
 with st.form('update_form'):
-    post_id = st.number_input('Post ID', min_value=1)
+    post_id = st.number_input('Post ID', min_value=2)
     new_title = st.text_input('New Title')
-    new_pages = st.number_input('New Pages', min_value=1)
-    new_price = st.number_input('New Price', min_value=0)
-    new_amount = st.number_input('New Amount', min_value=0)
+    new_pages = st.number_input('New Pages', min_value=2)
+    new_price = st.number_input('New Price', min_value=1)
+    new_amount = st.number_input('New Amount', min_value=1)
     new_genre = st.text_input('New Genre')
     new_author = st.text_input('New Author')
     new_series = st.checkbox('Is Series?')
@@ -58,10 +60,22 @@ with st.form('update_form'):
 # Delete a post
 st.header('Delete Post')
 with st.form('delete_form'):
-    delete_id = st.number_input('Post ID to Delete', min_value=1)
+    delete_id = st.number_input('Post ID to Delete', min_value=2)
     delete_submitted = st.form_submit_button('Delete')
 
     if delete_submitted:
         db.delete_post(delete_id)
         st.success('Post deleted!')
         refresh_posts()
+st.title('Test search')
+st.write('tst')
+documents_input = st.text_input("Documents (one per line):")
+if st.button('Search'):
+    search = Search(query, documents)
+    results = search.execute.search()
+    if results:
+        st.write('Results:')
+        for l in documnet in results:
+            st.write(f'{l}, {document}')
+
+

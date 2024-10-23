@@ -71,7 +71,7 @@ class UserDB:
         """
         borrower = True
         date_joined = datetime.now().strftime('%Y-%m-%d')  # Automatically add the current date
-        self.conn.execute('INSERT INTO Users (email, password, date_joined, staff, borrower) VALUES (?, ?, ?, ?, ?)',
+        -self.conn.execute('INSERT INTO Users (email, password, date_joined, staff, borrower) VALUES (?, ?, ?, ?, ?)',
                           (email, password, date_joined, staff, borrower))
         self.conn.commit()
 
@@ -83,3 +83,18 @@ class UserDB:
     def delete_user(self, id):
         self.conn.execute('DELETE FROM Users WHERE id = ?', (id,))
         self.conn.commit()
+
+class Search():
+    def __init__(self, query, database='posts.db'):
+        self.query = query.lower()
+        self.database = database()
+        self.results = []
+        self.cursor = self.conn.cursor()
+    def search(self):
+        if self.query:
+            sql_query = 'SELECT * FROM Posts WHERE title LIKE ? OR genre LIKE ?'
+            like_query = f'%{self.query}'
+            self.cursor.execute(sql_query, like_query)
+            self.reults = self.cursor.fetchall()
+            return self.results
+
