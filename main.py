@@ -67,15 +67,16 @@ with st.form('delete_form'):
         db.delete_post(delete_id)
         st.success('Post deleted!')
         refresh_posts()
-st.title('Test search')
-st.write('tst')
-documents_input = st.text_input("Documents (one per line):")
+
+
+query = st.text_input("Enter a search term")
 if st.button('Search'):
-    search = Search(query, documents)
-    results = search.execute.search()
+    search_i = Search(query)
+    results = search_i.search()
     if results:
-        st.write('Results:')
-        for l in documnet in results:
-            st.write(f'{l}, {document}')
-
-
+        st.write('Results')
+        for r in results:
+            st.title(r)
+            
+    else:
+        st.write('No results found')
