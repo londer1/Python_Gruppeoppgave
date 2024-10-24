@@ -1,6 +1,6 @@
 # Boknettside
 
-Nettsiden: [Boknettsida](https://boknettsida.streamlit.app/)
+Nettsiden: [Boknettsida](https://boknettsida.streamlit.app/) (not functional)
 
 Hvis linken ikke fungerer, kan du kjøre nettsiden lokalt ved å gjøre dette:
 1. Installer Streamlit: `pip install streamlit`
