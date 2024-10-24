@@ -13,3 +13,5 @@ To get started, ensure you have the following installed:
 - Streamlit: A powerful framework for building data-driven apps. Install it with:
   pip install streamlit
 
+- All requirements: streamlit, python 3.12.x and sqlite
+- how to run: streamlit run home.py or python -m streamlit run home.py
