@@ -133,7 +133,7 @@ books = [
     {"title": "The Blind Assassin", "price": "230 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1451445426i/78433.jpg"},
     {"title": "Atonement", "price": "210 NOK", "stock": 7, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320449708i/6867.jpg"},
     {"title": "Beloved", "price": "220 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1722944318i/6149.jpg"},
-    {"title": "Never Let Me Go", "price": "190 NOK", "stock": 9, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1722944318i/6149.jpg"},
+    {"title": "Never Let Me Go", "price": "190 NOK", "stock": 9, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1353048590i/6334.jpg"},
     {"title": "Cloud Atlas", "price": "230 NOK", "stock": 4, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1563042852i/49628.jpg"},
     {"title": "All the Light We Cannot See", "price": "240 NOK", "stock": 6, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1451445646i/18143977.jpg"},
     {"title": "Little Fires Everywhere", "price": "210 NOK", "stock": 5, "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1522684533i/34273236.jpg"},
