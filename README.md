@@ -1,6 +1,6 @@
 # Boknettsida
 
-Explore our website: https://boknettsida.streamlit.app/
+Explore our website: https://boknettsida.streamlit.app/ (not functional)
 
 ## Requirements
 
