@@ -1,39 +1,29 @@
 import streamlit as st
 from connection import UserDB
 
-# Create an instance of UserDB
+# Initialize UserDB
 user_db = UserDB()
 
-st.title("User Management")
+st.title("Login")
 
-# Show existing users
-st.subheader("All Users")
-users = user_db.fetch_all_users()
-
-if users:
-    for user in users:
-        st.write(f"ID: {user['id']}, Email: {user['email']}, Date Joined: {user['date_joined']}, Staff: {user['staff']}, Borrower: {user['borrower']}")
-else:
-    st.write("No users available.")
-
-# Add a new user
-st.subheader("Add New User")
+# Step 1: Login
+st.subheader("Login")
 email = st.text_input("Email")
 password = st.text_input("Password", type="password")
-staff = st.checkbox("Is Staff?", value=False)
 
-if st.button("Add User"):
-    if email and password:
-        user_db.add_user(email, password, staff=staff)
-        st.success("User added successfully!")
+# Initialize session state variables
+if "logged_in" not in st.session_state:
+    st.session_state['logged_in'] = False
+
+if "2fa_sent" not in st.session_state:
+    st.session_state['2fa_sent'] = False
+
+# Step 1: Validate login
+if not st.session_state['logged_in'] and st.button("Login"):
+    valid_login, user = user_db.validate_login(email, password)
+
+    if valid_login:
+        st.session_state['logged_in'] = True
+        st.success("Login successful!")
     else:
-        st.error("Email and password are required to add a user.")
-
-# Delete a user
-st.subheader("Delete User")
-user_id_to_delete = st.number_input("Enter User ID to delete", min_value=1)
-
-if st.button("Delete User"):
-    user_db.delete_user(user_id_to_delete)
-    st.success(f"User with ID {user_id_to_delete} deleted successfully!")
-
+        st.error("Invalid email or password.")
