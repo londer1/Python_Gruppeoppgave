@@ -1,10 +1,17 @@
-Nettsiden: https://boknettsida.streamlit.app/
+# Boknettside
 
-Hvis linken ikke laster, kan du kjøre den lokalt, ved å installere streamlit:
-1. pip install streamlit
-2. finn hvor filen du vil kjøre ved hjelp av cd og ls
-3. streamlit run bookshelf.py (eller noen av de andre filene)
+Nettsiden: [Boknettsida](https://boknettsida.streamlit.app/)
 
-Hvis du ikke finner filer, kan de ligge på andre branches.
+Hvis linken ikke fungerer, kan du kjøre nettsiden lokalt ved å gjøre dette:
+1. Installer Streamlit: `pip install streamlit`
+2. Bruk `cd` for å finne mappen der filen ligger, og `ls` for å se filene.
+3. Kjør siden med: `streamlit run bookshelf.py` (eller en av de andre filene).
 
-I denne oppgaven, er vi tre som samarbeider med å lage en nettside som kjører python. Nettsiden er en boknettside hvor man skal kunne kjøpe bøker. Vi bruker SQL lite, hvor vi legger til antall bøker på lager, tittel og pris. Vi bruker Streamlit som host. Mer vil komme her senere
+Hvis du ikke finner filene, sjekk de andre branchene – de kan ligge der.
+
+## Om prosjektet
+
+Vi er tre stykker som jobber sammen med å lage en nettside hvor du kan kjøpe bøker. Alt er laget med Python, og vi bruker Streamlit til å vise nettsiden. For å holde oversikt over bøkene bruker vi SQLite til å lagre:
+- Hvor mange bøker som er på lager
+- Tittel på bøkene
+- Pris på hver bok
