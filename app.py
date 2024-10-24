@@ -1,6 +1,6 @@
 import streamlit as st
 import sqlite3
-
+from search import Search
 # Custom CSS
 page_bg_css = """
 <style>
@@ -177,3 +177,15 @@ if posts:
             st.success(f"Post '{post['title']}' deleted successfully!")
 
 db.close()
+
+query = st.text_input("Enter a search term")
+if st.button('Search'):
+    search_i = Search(query)
+    results = search_i.search()
+    if results:
+        st.write('Results')
+        for r in results:
+            st.title(r)
+            
+    else:
+        st.write('No results found')
