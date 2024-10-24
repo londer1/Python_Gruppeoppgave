@@ -178,14 +178,4 @@ if posts:
 
 db.close()
 
-query = st.text_input("Enter a search term")
-if st.button('Search'):
-    search_i = Search(query)
-    results = search_i.search()
-    if results:
-        st.write('Results')
-        for r in results:
-            st.title(r)
-            
-    else:
-        st.write('No results found')
+

@@ -1,7 +1,7 @@
 import streamlit as st
 from connection import PostDB  # Import the PostDB class
 import sqlite3
-
+from search import Search
 def refresh_posts():
     st.session_state.posts = db.fetch_all_posts()
 
@@ -81,7 +81,7 @@ with st.form('delete_form'):
         st.success('Vare slettet!')
         refresh_posts()
         
-query = st.text_input("Enter a search term")
+query = st.text_input("Skriv inn en tittel eller sjanger på en bok")
 if st.button('Search'):
     search_i = Search(query)
     results = search_i.search()
@@ -91,4 +91,4 @@ if st.button('Search'):
             st.title(r)
             
     else:
-        st.write('No results found')
+        st.write('Ingen resultater ble funnet')

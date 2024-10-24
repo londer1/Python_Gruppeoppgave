@@ -5,7 +5,6 @@ class Search():
 
     def __init__(self, query, database='db.sqlite3'):
         self.query = query.lower()
-        self.database = database()
         self.database = database
         self.results = []
         self.conn = sqlite3.connect(self.database)
@@ -13,9 +12,6 @@ class Search():
     def search(self):
         if self.query:
             sql_query = 'SELECT * FROM Posts WHERE title LIKE ? OR genre LIKE ?'
-            like_query = f'%{self.query}'
-            self.cursor.execute(sql_query, like_query)
-            self.reults = self.cursor.fetchall()
             like_query = f'%{self.query}%'
             self.cursor.execute(sql_query, (like_query, like_query))
             self.results = self.cursor.fetchall()
