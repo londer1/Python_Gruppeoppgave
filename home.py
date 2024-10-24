@@ -39,7 +39,7 @@ p {
     border: 1px solid #ddd;
     border-radius: 10px;
     margin-bottom: 20px;
-    width: 300px;  /* Reduced box size */
+    width: 300px;
 }
 .book-image {
     width: 80px;
@@ -52,7 +52,7 @@ st.markdown(page_bg_css, unsafe_allow_html=True)
 
 # Initialize UserDB and PostDB
 user_db = UserDB()
-post_db = PostDB()
+db = PostDB()
 
 # Set session state for navigation
 if "logged_in" not in st.session_state:
@@ -81,7 +81,7 @@ def suppress_errors(func):
 @suppress_errors
 def login():
     st.title("Login")
-    email = st.text_input("Email")
+    email = st.text_input("Username")
     password = st.text_input("Password", type="password")
     
     if st.button("Log in"):
@@ -94,23 +94,22 @@ def login():
         else:
             st.error("Invalid email or password.")  # Optional error display, you can suppress it if needed
 
-# Home page content
+# Sorting system for books
+def sort_posts(sort_by):
+    query = f"SELECT * FROM Posts ORDER BY {sort_by}"
+    return db.conn.execute(query).fetchall()
+
+# Home page content with sorting
 @suppress_errors
 def home_page():
     st.title("Welcome to the Book System")
     st.write(f"You are logged in as: {st.session_state['user_role']}")
     
-    # Search functionality
-    st.subheader("Search Books")
-    search_term = st.text_input("Search by title, author, or genre")
-    
-    if search_term:
-        # Use the Search class to search the database
-        search_obj = Search(search_term)
-        books = search_obj.search()
-        search_obj.close()
-    else:
-        books = post_db.fetch_all_posts()
+    # Sorting functionality
+    st.subheader("Sort Books")
+    sort_option = st.selectbox('Sorter etter', ['Navn', 'Pris', 'Mengde'])
+    sort_column = {'Navn': 'title', 'Pris': 'price', 'Mengde': 'amount'}[sort_option]
+    books = sort_posts(sort_column)
 
     # Show books as smaller cards with images
     if books:
@@ -131,9 +130,7 @@ def home_page():
     else:
         st.write("No books found.")
 
-    # Show common features for all users
-    st.subheader("Common Features")
-    st.write("1. View available books")
+
     
     # Staff-specific features
     if st.session_state["user_role"] == "Staff":
@@ -181,14 +178,19 @@ def admin_user_creation_page():
     if st.button("Back"):
         set_page("home")
 
-# Book Storage Updater Page
+#books
 @suppress_errors
 def book_storage_updater_page():
     st.title("Book Storage Updater")
 
-    # 1. Show a list of all books
+    # Sorting functionality
+    st.subheader("Sort Books")
+    sort_option = st.selectbox('Sorter etter', ['Navn', 'Pris', 'Mengde'])
+    sort_column = {'Navn': 'title', 'Pris': 'price', 'Mengde': 'amount'}[sort_option]
+    books = sort_posts(sort_column)
+
+    # 1. Show a list of all sorted books
     st.subheader("List of Books")
-    books = post_db.fetch_all_posts()
     if books:
         for book in books:
             st.write(f"ID: {book['id']}, Title: {book['title']}, Pages: {book['pages']}, Price: {book['price']}, Stock: {book['amount']}, Author: {book['author']}")
@@ -209,39 +211,33 @@ def book_storage_updater_page():
         submitted = st.form_submit_button('Create Book')
 
         if submitted and title and pages and price and amount and genre and author:
-            post_db.add_post(title, pages, price, amount, genre, author, series, image_url)
+            db.add_post(title, pages, price, amount, genre, author, series, image_url)
             st.success('Book created successfully!')
             st.experimental_rerun()  # Reload the page after adding the book
         elif submitted:
             st.error('Please fill in all fields.')
 
-    def update_stock(self, book_id, new_amount):
-        self.conn.execute('UPDATE Posts SET amount = ? WHERE id = ?', (new_amount, book_id))
-        self.conn.commit()
-
-    # Streamlit part of the code
+    # 3. Update stock (using a form for entering ID and new stock amount)
     st.subheader("Update Book Stock")
+    with st.form('update_form'):
+        book_id_to_update = st.number_input("Enter Book ID to Update", min_value=1)
+        new_stock_amount = st.number_input("Enter New Stock Amount", min_value=0)
+        update_submitted = st.form_submit_button('Update Stock')
 
-    # Input field to select the book ID
-    book_id_to_update = st.number_input("Enter Book ID to Update", min_value=1)
+        if update_submitted:
+            post = db.conn.execute('SELECT * FROM Posts WHERE id = ?', (book_id_to_update,)).fetchone()
+            if post:
+                db.update_post(book_id_to_update, post['title'], post['pages'], post['price'], new_stock_amount, post['genre'], post['author'], post['series'])
+                st.success(f"Updated stock for Book ID {book_id_to_update} to {new_stock_amount}")
+                st.experimental_rerun()  # Reload the page after updating stock
+            else:
+                st.error('Book not found.')
 
-    # Input field for the new stock amount
-    new_stock_amount = st.number_input("Enter New Stock Amount", min_value=0)
-
-    # Button to trigger the stock update
-    if st.button("Update Stock"):
-        if book_id_to_update and new_stock_amount >= 0:
-            # Call the update_stock method from PostDB to update the book's stock
-            post_db.update_po(book_id_to_update, new_stock_amount)
-            st.success(f"Updated stock for Book ID {book_id_to_update} to {new_stock_amount}")
-        else:
-            st.error("Please provide a valid Book ID and Stock Amount.")
-
-    # 3. Delete a book
+    # 4. Delete a book
     st.subheader("Delete Book")
     book_id_to_delete = st.number_input("Enter Book ID to Delete", min_value=1)
     if st.button("Delete Book"):
-        post_db.delete_post(book_id_to_delete)
+        db.delete_post(book_id_to_delete)
         st.success(f"Book with ID {book_id_to_delete} deleted successfully!")
         st.experimental_rerun()
 
