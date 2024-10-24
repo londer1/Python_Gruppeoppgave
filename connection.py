@@ -1,6 +1,5 @@
 import sqlite3
 from datetime import datetime
-import hashlib
 
 class PostDB:
     def __init__(self, db_name='db.sqlite3'):
@@ -89,9 +88,6 @@ class UserDB:
         self.conn.execute('DELETE FROM Users WHERE id = ?', (user_id,))
         self.conn.commit()
 
-    def hash_password(self, password):
-        # Use SHA-256 or stronger hashing
-        return hashlib.sha256(password.encode()).hexdigest()
 
 # Example Usage
 if __name__ == "__main__":
