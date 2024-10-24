@@ -1,6 +1,6 @@
 import streamlit as st
 import sqlite3
-from search import Search
+from connection import Search
 # Custom CSS
 page_bg_css = """
 <style>

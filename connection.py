@@ -112,24 +112,24 @@ if __name__ == "__main__":
 
     # Example of deleting a user
     # user_db.delete_user(user_id)  # Replace user_id with the actual ID to delete
-class Search():
+class Search:
 
     def __init__(self, query, database='db.sqlite3'):
-        self.query = query.lower()
-        self.database = database()
-        self.database = database
+        self.query = query.lower()  # Convert query to lowercase for case-insensitive search
+        self.database = database  # Assign the database file name
         self.results = []
         self.conn = sqlite3.connect(self.database)
+        self.conn.row_factory = sqlite3.Row  # To get dict-like rows
         self.cursor = self.conn.cursor()
+
     def search(self):
         if self.query:
-            sql_query = 'SELECT * FROM Posts WHERE title LIKE ? OR genre LIKE ?'
-            like_query = f'%{self.query}'
-            self.cursor.execute(sql_query, like_query)
-            self.reults = self.cursor.fetchall()
+            sql_query = 'SELECT * FROM Posts WHERE LOWER(title) LIKE ? OR LOWER(genre) LIKE ?'
             like_query = f'%{self.query}%'
             self.cursor.execute(sql_query, (like_query, like_query))
             self.results = self.cursor.fetchall()
             return self.results
+        return []  # Return an empty list if no query is provided
+
     def close(self):
         self.conn.close()
