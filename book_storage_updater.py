@@ -1,7 +1,7 @@
 import streamlit as st
 from connection import PostDB  # Import the PostDB class
 import sqlite3
-
+from connection import Search
 def refresh_posts():
     st.session_state.posts = db.fetch_all_posts()
 
@@ -80,7 +80,7 @@ with st.form('delete_form'):
         db.delete_post(delete_id)
         st.success('Vare slettet!')
         refresh_posts()
-        
+
 query = st.text_input("Enter a search term")
 if st.button('Search'):
     search_i = Search(query)
