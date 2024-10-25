@@ -93,25 +93,7 @@ class UserDB:
         # Use SHA-256 or stronger hashing
         return hashlib.sha256(password.encode()).hexdigest()
 
-# Example Usage
-if __name__ == "__main__":
-    # Initialize UserDB
-    user_db = UserDB()
 
-    # Example of adding a user
-    user_db.add_user("test@example.com", "securepassword")
-
-    # Example of login
-    email = "test@example.com"
-    password = "securepassword"
-    is_valid, user = user_db.validate_login(email, password)
-    if is_valid:
-        print(f"Login successful! Welcome, {user['email']}.")
-    else:
-        print("Login failed. Invalid email or password.")
-
-    # Example of deleting a user
-    # user_db.delete_user(user_id)  # Replace user_id with the actual ID to delete
 class Search:
 
     def __init__(self, query, database='db.sqlite3'):
